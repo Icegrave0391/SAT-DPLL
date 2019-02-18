@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		08C63FA2221AC2C500979192 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FA1221AC2C500979192 /* main.c */; };
+		08C63FAA221AC34400979192 /* CNFFileManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FA9221AC34400979192 /* CNFFileManager.c */; };
+		08C63FB0221AC9BB00979192 /* CNFFormula.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FAF221AC9BB00979192 /* CNFFormula.c */; };
+		08C63FB3221ACDDE00979192 /* CNFClause.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FB2221ACDDE00979192 /* CNFClause.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,12 @@
 /* Begin PBXFileReference section */
 		08C63F9E221AC2C500979192 /* CourseDesign */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CourseDesign; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C63FA1221AC2C500979192 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		08C63FA8221AC34400979192 /* CNFFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNFFileManager.h; sourceTree = "<group>"; };
+		08C63FA9221AC34400979192 /* CNFFileManager.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CNFFileManager.c; sourceTree = "<group>"; };
+		08C63FAE221AC9BB00979192 /* CNFFormula.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNFFormula.h; sourceTree = "<group>"; };
+		08C63FAF221AC9BB00979192 /* CNFFormula.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CNFFormula.c; sourceTree = "<group>"; };
+		08C63FB1221ACDDD00979192 /* CNFClause.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNFClause.h; sourceTree = "<group>"; };
+		08C63FB2221ACDDE00979192 /* CNFClause.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CNFClause.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				08C63FA1221AC2C500979192 /* main.c */,
+				08C63FA8221AC34400979192 /* CNFFileManager.h */,
+				08C63FA9221AC34400979192 /* CNFFileManager.c */,
+				08C63FB1221ACDDD00979192 /* CNFClause.h */,
+				08C63FB2221ACDDE00979192 /* CNFClause.c */,
+				08C63FAE221AC9BB00979192 /* CNFFormula.h */,
+				08C63FAF221AC9BB00979192 /* CNFFormula.c */,
 			);
 			path = CourseDesign;
 			sourceTree = "<group>";
@@ -118,7 +133,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C63FB3221ACDDE00979192 /* CNFClause.c in Sources */,
 				08C63FA2221AC2C500979192 /* main.c in Sources */,
+				08C63FAA221AC34400979192 /* CNFFileManager.c in Sources */,
+				08C63FB0221AC9BB00979192 /* CNFFormula.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
