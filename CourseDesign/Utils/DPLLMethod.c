@@ -7,3 +7,9 @@
 //
 
 #include "DPLLMethod.h"
+
+//int DPLLWithFormula(formulaList fmList){
+//    while (findUnitClause(fmList)) {
+//        <#statements#>
+//    }
+//}

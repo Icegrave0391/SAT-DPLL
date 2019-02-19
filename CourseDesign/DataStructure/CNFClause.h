@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#pragma mark - status
 enum ClauseStatus{         //子句保留状态
     ClauseStatusDeleted = 0,        //子句被删除
     ClauseStatusStill
@@ -23,11 +24,12 @@ enum LiteralContainStatus{
     LiteralContainStatusContainInverse,
     LiteralContainStatusContainBoth
 };
-typedef enum LiteralContainStatus LiteralContainStatus;
-//Clause struct
 
+typedef enum LiteralContainStatus LiteralContainStatus;
+
+#pragma mark - Clause struct
 typedef struct {
-    int literalNum ;      //via file 
+    int literalCount ;      //via file
     ClauseStatus clauseStatus ;
     int * literals ;
 } Clause ;
@@ -36,7 +38,7 @@ typedef Clause * clause ;
 
 //clause operate functions
 
-clause createClause(int literalNum, enum ClauseStatus clsStatus, int * literals) ;
+clause createClause(int literalNum, ClauseStatus clsStatus, int * literals) ;
 //int destoryClause(clause cls) ;
 int isUnitClause (Clause cls) ;
 

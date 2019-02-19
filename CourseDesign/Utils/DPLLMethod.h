@@ -13,4 +13,5 @@
 #include "CNFClause.h"
 #include "CNFFormula.h"
 
+int DPLLWithFormula(formulaList fmList) ;
 #endif /* DPLLMethod_h */

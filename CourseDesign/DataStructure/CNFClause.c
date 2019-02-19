@@ -8,23 +8,23 @@
 
 #include "CNFClause.h"
 
-clause createClause(int literalNum, enum ClauseStatus clsStatus, int * literals){
+clause createClause(int literalNum, ClauseStatus clsStatus, int * literals){
     clause cls = (clause)malloc(sizeof(Clause)) ;
     cls -> clauseStatus = clsStatus ;
-    cls -> literalNum = literalNum ;
+    cls -> literalCount = literalNum ;
     cls -> literals = literals ;
     return cls ;
 }
 
 int isUnitClause (Clause cls){
-    if(cls.literalNum == 1)return 1 ;
+    if(cls.literalCount == 1 && cls.clauseStatus == ClauseStatusStill)return 1 ;
     return 0 ;
 }
 
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal){
     int iter = 0 ;
     int flag = 0 ;
-    while (iter < Cls.literalNum) {
+    while (iter < Cls.literalCount) {
         if(!flag){
             if(Cls.literals[iter] == literal && !flag)flag = 1 ;  //contain
             else if(Cls.literals[iter] == - literal && !flag)flag = 2 ;  //contain inverse
@@ -55,7 +55,7 @@ LiteralContainStatus literalStatusWithClause(Clause Cls, int literal){
 
 int evaluateClauseWithLiteral (Clause Cls, int literal){
     int iter = 0 ;
-    while(iter < Cls.literalNum){
+    while(iter < Cls.literalCount){
         if(Cls.literals[iter++] == literal) return 1 ;
     }
     return 0 ;

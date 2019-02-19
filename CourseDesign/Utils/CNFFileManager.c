@@ -12,9 +12,9 @@ formulaList loadCNFFileFormula(char * filePath){
     FILE * fp = NULL ;
     int literal ;
     int literalNum, clauseNum ;
+#pragma mark - create formula list
     formulaList list ;
     init(&list) ;
-    
     
     if(!(fp = fopen(filePath, "r"))){
         printf("File_Operate_Error\n") ;

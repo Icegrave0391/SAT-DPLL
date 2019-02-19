@@ -11,8 +11,13 @@
 #include <stdio.h>
 #include "CNFClause.h"
 #include <stdlib.h>
-
-//formula struct
+#pragma mark - status
+enum DeleteClauseStatus{
+    DeleteClauseStatusNotFound = 0,
+    DeleteClauseStatusSuccessful
+};
+typedef enum DeleteClauseStatus DeleteClauseStatus;
+#pragma mark - structure
 struct FormulaNode{
     clause clause ;
     struct FormulaNode * next ;
@@ -23,6 +28,9 @@ typedef struct FormulaNode * formulaList;
 int init(formulaList * ls) ;
 int formulaEmpty(formulaList Ls) ;
 int clauseNum(formulaList Ls) ;
+
+#pragma mark - clause operations
 void addClause(formulaList Ls, clause cls) ;
-int deleteClause(formulaList Ls, clause cls) ;
+DeleteClauseStatus deleteClause(formulaList Ls, clause cls) ;
+clause findUnitClause(formulaList Ls) ;
 #endif /* CNFFormula_h */

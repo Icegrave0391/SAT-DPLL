@@ -51,22 +51,42 @@ void addClause(formulaList Ls, clause cls){
     }
 }
 
-int deleteClause(formulaList Ls, clause cls){
-    formulaList currP = Ls ; //init : head
-    formulaList prevP = NULL ;
-    while((currP -> next) && (currP -> clause != cls)){
-        prevP = currP ;
+DeleteClauseStatus deleteClause(formulaList Ls, clause cls){
+    #pragma mark - real delete
+//    formulaList currP = Ls ; //init : head
+//    formulaList prevP = NULL ;
+//    while((currP -> next) && (currP -> clause != cls)){
+//        prevP = currP ;
+//        currP = currP -> next ;
+//    }
+//    if(currP -> clause == cls){
+//        if(currP -> next){
+//            prevP -> next = currP -> next ;
+//        }
+//        else{
+//            prevP -> next = NULL ;
+//        }
+//        return 1 ;
+//    }else{     // no match clause
+//        return 0 ;
+//    }
+   #pragma mark - delete via status
+    formulaList currP = Ls ;
+    while (currP) {
+        if(currP -> clause -> clauseStatus == ClauseStatusStill && currP -> clause == cls){
+            currP -> clause -> clauseStatus = ClauseStatusDeleted ;
+            return DeleteClauseStatusSuccessful ;
+        }
         currP = currP -> next ;
     }
-    if(currP -> clause == cls){
-        if(currP -> next){
-            prevP -> next = currP -> next ;
-        }
-        else{
-            prevP -> next = NULL ;
-        }
-        return 1 ;
-    }else{     // no match clause
-        return 0 ;
+    return DeleteClauseStatusNotFound ;
+}
+
+clause findUnitClause(formulaList Ls){
+    formulaList currP = Ls ;
+    while (currP) {
+        if(isUnitClause(* (currP -> clause)))return currP -> clause ;
+        currP = currP -> next ;
     }
+    return NULL ;
 }
