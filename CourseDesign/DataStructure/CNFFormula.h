@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "CNFClause.h"
 #include <stdlib.h>
+
 //formula struct
 struct FormulaNode{
     clause clause ;

@@ -10,6 +10,7 @@
 int init(formulaList * ls){
     *ls = (formulaList)malloc(sizeof(struct FormulaNode)) ;
     if(*ls == NULL) return 0 ;
+    (*ls) -> clause = NULL ;
     (*ls) -> next = NULL ;
     return 1 ;
 }
@@ -30,16 +31,24 @@ int clauseNum(formulaList Ls){
 }
 
 void addClause(formulaList Ls, clause cls){
-    formulaList currP = Ls ;   //init : head
-    formulaList tailP = NULL ;
-    while (currP) {
-        tailP = currP ;
-        currP = currP -> next ;
+    if(!Ls -> clause){
+//        formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
+//        newElemP -> next = NULL ;
+//        newElemP -> clause = cls ;
+//        Ls = newa
+        Ls -> clause = cls ;
+    }else{
+        formulaList currP = Ls ;   //init : head
+        formulaList tailP = NULL ;
+        while (currP) {
+            tailP = currP ;
+            currP = currP -> next ;
+        }
+        formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
+        newElemP -> next = NULL ;
+        newElemP -> clause = cls ;
+        tailP -> next = newElemP ;
     }
-    formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
-    newElemP -> next = NULL ;
-    newElemP -> clause = cls ;
-    tailP -> next = newElemP ;
 }
 
 int deleteClause(formulaList Ls, clause cls){

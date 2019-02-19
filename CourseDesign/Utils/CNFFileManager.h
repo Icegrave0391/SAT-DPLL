@@ -13,6 +13,7 @@
 #include "CNFClause.h"
 #include "CNFFormula.h"
 
+#pragma mark - read CNF file
 formulaList loadCNFFileFormula(char * filePath) ;
 
 #endif /* CNFFileManager_h */

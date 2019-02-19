@@ -7,9 +7,11 @@
 //
 
 #include <stdio.h>
+#include "CNFFileManager.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    formulaList list ;
+    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/tst_v10_c100.cnf") ;
+    
     return 0;
 }
