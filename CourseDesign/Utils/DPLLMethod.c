@@ -22,15 +22,15 @@ int DPLLWithFormula(formulaList fmList){
         while (currP) {
             //remove clause
             if(literalStatusWithClause(* currP -> clause, literal) == LiteralContainStatusContain || literalStatusWithClause( * currP -> clause, literal) == LiteralContainStatusContainBoth){
-                deleteClause(fmList, cls) ;
+                deleteClause(fmList, currP -> clause) ;
             }
             //remove literal
             else if(literalStatusWithClause(* currP -> clause, literal) == LiteralContainStatusContainInverse){
-                deleteLiteral(cls, literal) ;
+                deleteLiteral(currP -> clause, -literal) ;
             }
+            currP = currP -> next ;
         }
     }
-    
     
     return  0 ;
 }

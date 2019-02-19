@@ -48,7 +48,6 @@ void addClause(formulaList Ls, clause cls){
         newElemP -> next = NULL ;
         newElemP -> clause = cls ;
         tailP -> next = newElemP ;
-        printf("log");
     }
 }
 

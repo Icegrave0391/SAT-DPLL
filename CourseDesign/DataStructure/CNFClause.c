@@ -17,9 +17,18 @@ clause createClause(int literalNum, ClauseStatus clsStatus, int * literals){
     return cls ;
 }
 
+//unit clause : 1.statusStill 2.literals contains only 1 elem not 0
 int isUnitClause (Clause cls){
-    if(cls.literalCount == 1 && cls.clauseStatus == ClauseStatusStill)return 1 ;
-    return 0 ;
+//    if(cls.literalCount == 1 && cls.clauseStatus == ClauseStatusStill)return 1 ;
+    if(cls.clauseStatus == ClauseStatusDeleted)return 0 ;
+    else{
+        int flag = 0 ;
+        for(int i = 0 ; i < cls.literalCount ; i++){
+            if(cls.literals[i]) flag++ ;
+        }
+        if (flag == 1)return 1 ;
+        return 0;
+    }
 }
 
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal){

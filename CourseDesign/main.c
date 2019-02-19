@@ -30,13 +30,18 @@ int main(int argc, const char * argv[]) {
         while (currP) {
             //remove clause
             if(literalStatusWithClause(* currP -> clause, literal) == LiteralContainStatusContain || literalStatusWithClause( * currP -> clause, literal) == LiteralContainStatusContainBoth){
-                deleteClause(fmList, cls) ;
+                deleteClause(fmList, currP -> clause) ;
             }
             //remove literal
             else if(literalStatusWithClause(* currP -> clause, literal) == LiteralContainStatusContainInverse){
-                deleteLiteral(cls, literal) ;
+                deleteLiteral(currP -> clause, -literal) ;
             }
+            currP = currP -> next ;
         }
+    }
+    printf("%p %p", allLiteralArr, fmList) ;
+    for (int i = 0; i < totalLiteralCount; i ++) {
+        printf("%d ", allLiteralArr[i]) ;
     }
     return 0;
 }
