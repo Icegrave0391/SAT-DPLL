@@ -26,7 +26,7 @@ enum LiteralContainStatus{
 typedef enum LiteralContainStatus LiteralContainStatus;
 //Clause struct
 
-typedef struct{
+typedef struct {
     int literalNum ;      //via file 
     ClauseStatus clauseStatus ;
     int * literals ;

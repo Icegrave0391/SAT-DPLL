@@ -10,7 +10,9 @@
 #define CNFFileManager_h
 
 #include <stdio.h>
+#include "CNFClause.h"
+#include "CNFFormula.h"
 
-int loadFile(char *) ;
+formulaList loadCNFFileFormula(char * filePath) ;
 
 #endif /* CNFFileManager_h */
