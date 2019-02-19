@@ -7,12 +7,13 @@
 //
 
 #include "CNFClause.h"
-
+#include <string.h>
 clause createClause(int literalNum, ClauseStatus clsStatus, int * literals){
     clause cls = (clause)malloc(sizeof(Clause)) ;
     cls -> clauseStatus = clsStatus ;
     cls -> literalCount = literalNum ;
-    cls -> literals = literals ;
+    cls -> literals = (int *)malloc(sizeof(int) * literalNum) ;
+    memcpy(cls -> literals, literals, literalNum * sizeof(int)) ;
     return cls ;
 }
 
@@ -59,4 +60,10 @@ int evaluateClauseWithLiteral (Clause Cls, int literal){
         if(Cls.literals[iter++] == literal) return 1 ;
     }
     return 0 ;
+}
+
+void deleteLiteral(clause cls, int literal){
+    for(int i = 0 ; i < cls -> literalCount ; i++){
+        if(cls -> literals[i] == literal)cls -> literals[i] = 0 ;
+    }
 }

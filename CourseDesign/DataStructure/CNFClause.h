@@ -22,7 +22,7 @@ enum LiteralContainStatus{
     LiteralContainStatusNotContain = 0,
     LiteralContainStatusContain,
     LiteralContainStatusContainInverse,
-    LiteralContainStatusContainBoth
+    LiteralContainStatusContainBoth 
 };
 
 typedef enum LiteralContainStatus LiteralContainStatus;
@@ -43,6 +43,6 @@ clause createClause(int literalNum, ClauseStatus clsStatus, int * literals) ;
 int isUnitClause (Clause cls) ;
 
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal) ;
-int evaluateClauseWithLiteral (Clause Cls, int literal) ;
-
+//int evaluateClauseWithLiteral (Clause Cls, int literal) ;
+void deleteLiteral(clause cls, int literal) ;
 #endif /* CNFClause_h */

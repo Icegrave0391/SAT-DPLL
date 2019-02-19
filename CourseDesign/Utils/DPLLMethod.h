@@ -13,5 +13,6 @@
 #include "CNFClause.h"
 #include "CNFFormula.h"
 
+int * allLiteralArr = NULL ;
 int DPLLWithFormula(formulaList fmList) ;
 #endif /* DPLLMethod_h */

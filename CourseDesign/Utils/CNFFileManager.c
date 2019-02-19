@@ -13,9 +13,8 @@ formulaList loadCNFFileFormula(char * filePath){
     int literal ;
     int literalNum, clauseNum ;
 #pragma mark - create formula list
-    formulaList list ;
+    formulaList list = NULL;
     init(&list) ;
-    
     if(!(fp = fopen(filePath, "r"))){
         printf("File_Operate_Error\n") ;
         return NULL ;
@@ -28,6 +27,10 @@ formulaList loadCNFFileFormula(char * filePath){
         //read p (literalNum and clauseNum)
         for(int i = 0 ; i < 5 ; i++)fgetc(fp) ;
         fscanf(fp, "%d %d", &literalNum, &clauseNum) ;
+        //extern
+        extern int totalLiteralCount, totalClauseCount ;
+        totalLiteralCount = literalNum ;
+        totalClauseCount = clauseNum ;
 #pragma mark - literals operate
         //read literals
         for(int i = 0 ; i < clauseNum ; i++){
@@ -36,10 +39,18 @@ formulaList loadCNFFileFormula(char * filePath){
             while(fscanf(fp, "%d",&literal) && literal){
                 arr[count ++] = literal ;
             }
+            
+//            for (int i = 0; i < count; i ++) {
+//                printf("%d ",arr[i]) ;
+//            }printf("\n");
             clause cls = createClause(count, ClauseStatusStill, arr) ;
+            for(int i = 0 ; i < cls -> literalCount ; i++){
+                printf("%d ", cls -> literals[i]) ;
+            }printf("\n") ;
             addClause(list, cls) ;
             free(arr) ;
         }
     }
+    list ;
     return list;
 }
