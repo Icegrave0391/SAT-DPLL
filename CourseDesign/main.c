@@ -16,8 +16,8 @@ int * allLiteralArr = NULL ;
 
 int main(int argc, const char * argv[]) {
     formulaList list ;
-//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/tst_v10_c100.cnf") ;
-    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/hh.cnf") ;
+    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/tst_v10_c100.cnf") ;
+//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/hh.cnf") ;
     
 //debug log
 //    formulaList fmList = list ;
@@ -46,6 +46,11 @@ int main(int argc, const char * argv[]) {
 //    for (int i = 0; i < totalLiteralCount; i ++) {
 //        printf("%d ", allLiteralArr[i]) ;
 //    }
-    DPLLWithFormula(list) ;
+//    DPLLWithFormula(list) ;
+    if(DPLLWithFormula(list)){
+        printf("可以的！") ;
+    }else{
+        printf("不行！！！") ;
+    }
     return 0;
 }

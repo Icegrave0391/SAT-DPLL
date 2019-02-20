@@ -17,6 +17,14 @@ clause createClause(int literalNum, ClauseStatus clsStatus, int * literals){
     return cls ;
 }
 
+clause deepCpyClause(clause aclause){
+    int literalNum = aclause -> literalCount ;
+    ClauseStatus clsStatus = aclause -> clauseStatus ;
+    int * literals = (int *)malloc(sizeof(int) * literalNum) ;
+    memcpy(literals, aclause -> literals, literalNum * sizeof(int)) ;
+    clause cls = createClause(literalNum, clsStatus, literals) ;
+    return cls ;
+}
 //unit clause : 1.statusStill 2.literals contains only 1 elem not 0
 int isUnitClause (Clause cls){
 //    if(cls.literalCount == 1 && cls.clauseStatus == ClauseStatusStill)return 1 ;
@@ -29,6 +37,13 @@ int isUnitClause (Clause cls){
         if (flag == 1)return 1 ;
         return 0;
     }
+}
+
+int isEmptyClause(Clause cls){
+    for (int i = 0 ; i < cls.literalCount ; i++) {
+        if(cls.literals[i])return 0 ;
+    }
+    return 1 ;
 }
 
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal){
@@ -62,17 +77,25 @@ LiteralContainStatus literalStatusWithClause(Clause Cls, int literal){
     }
     return 0 ;
 }
-
-int evaluateClauseWithLiteral (Clause Cls, int literal){
-    int iter = 0 ;
-    while(iter < Cls.literalCount){
-        if(Cls.literals[iter++] == literal) return 1 ;
-    }
-    return 0 ;
-}
+//
+//int evaluateClauseWithLiteral (Clause Cls, int literal){
+//    int iter = 0 ;
+//    while(iter < Cls.literalCount){
+//        if(Cls.literals[iter++] == literal) return 1 ;
+//    }
+//    return 0 ;
+//}
 
 void deleteLiteral(clause cls, int literal){
     for(int i = 0 ; i < cls -> literalCount ; i++){
         if(cls -> literals[i] == literal)cls -> literals[i] = 0 ;
     }
+}
+
+int findRandomLiteral(clause cls){
+    if(cls -> clauseStatus == ClauseStatusDeleted || isEmptyClause( *cls)) return 0 ;
+    for (int i = 0 ; i < cls -> literalCount; i++) {
+        if(cls -> literals[i]) return cls -> literals[i] ;
+    }
+    return 0 ;
 }

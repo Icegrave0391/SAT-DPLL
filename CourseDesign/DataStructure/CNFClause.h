@@ -39,10 +39,11 @@ typedef Clause * clause ;
 //clause operate functions
 
 clause createClause(int literalNum, ClauseStatus clsStatus, int * literals) ;
+clause deepCpyClause(clause aclause) ;
 //int destoryClause(clause cls) ;
 int isUnitClause (Clause cls) ;
-
+int isEmptyClause(Clause cls) ;
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal) ;
-//int evaluateClauseWithLiteral (Clause Cls, int literal) ;
 void deleteLiteral(clause cls, int literal) ;
+int findRandomLiteral(clause cls) ;
 #endif /* CNFClause_h */

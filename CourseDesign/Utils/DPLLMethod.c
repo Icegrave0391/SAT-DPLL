@@ -16,9 +16,24 @@ int DPLLWithFormula(formulaList fmList){
     //remove&mark all unit clause and save unit literal
 #pragma mark - REMOVE ALL UNIT CLAUSE
     dealUnitClause(fmList, allLiteralArr) ;
+    //condition
+    if(isFormulaEmpty(fmList))return 1 ;
+    else if(emptyClauseInFormula(fmList))return 0 ;
 #pragma mark - CREATE UNIT STRATEGTY
-    return  0 ;
-}
+    else{
+        clause cls = findFirstStillClase(fmList) ;
+        int literal = findRandomLiteral(cls) ;
+        int inverseLiteral = - literal ;
+        clause newUnitCls = createClause(1, ClauseStatusStill, &literal) ;
+        clause newUnitClsInverse = createClause(1, ClauseStatusStill, &inverseLiteral) ;
+        formulaList cpyList = deepCpyFormulaList(fmList) ;
+        addUnitClause(&cpyList, newUnitCls) ;
+       // arr 未处理
+        if(DPLLWithFormula(cpyList))return 1 ;
+        addUnitClause(&fmList, newUnitClsInverse) ;
+        return DPLLWithFormula(fmList) ;
+    }
+} 
 
 void dealUnitClause(formulaList fmList, int * literalArr){
     clause cls = NULL ;

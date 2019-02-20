@@ -26,11 +26,18 @@ typedef struct FormulaNode * formulaList;
 
 // Formula functions
 int init(formulaList * ls) ;
-int formulaEmpty(formulaList Ls) ;
+int isFormulaEmpty(formulaList Ls) ;
 int clauseNum(formulaList Ls) ;
 
+int emptyClauseInFormula(formulaList Ls) ;
 #pragma mark - clause operations
+#pragma mark - *****WARNING ONLY USE ADD UNIT WHILE DPLL
 void addClause(formulaList Ls, clause cls) ;
+void addUnitClause(formulaList * ls, clause cls) ;
+
 DeleteClauseStatus deleteClause(formulaList Ls, clause cls) ;
 clause findUnitClause(formulaList Ls) ;
+clause findFirstStillClase(formulaList Ls) ;
+#pragma mark - formula cpy
+formulaList deepCpyFormulaList(formulaList Ls) ;
 #endif /* CNFFormula_h */

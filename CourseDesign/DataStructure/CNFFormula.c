@@ -7,6 +7,7 @@
 //
 
 #include "CNFFormula.h"
+#include <string.h>
 int init(formulaList * ls){
     *ls = (formulaList)malloc(sizeof(struct FormulaNode)) ;
     if(*ls == NULL) return 0 ;
@@ -15,16 +16,20 @@ int init(formulaList * ls){
     return 1 ;
 }
 
-int formulaEmpty(formulaList Ls){
-    if(Ls -> next == NULL)return 1 ;
-    return 0 ;
+int isFormulaEmpty(formulaList Ls){
+    formulaList currP = Ls ;
+    while (currP) {
+        if(currP -> clause -> clauseStatus == ClauseStatusStill) return 0 ;
+        currP = currP -> next ;
+    }
+    return 1 ;
 }
 
 int clauseNum(formulaList Ls){
     int count = 0 ;
     formulaList currP = Ls ;
     while(currP){
-        count++ ;
+        if(currP -> clause -> clauseStatus == ClauseStatusStill) count ++ ;
         currP = currP -> next;
     }
     return count ;
@@ -51,6 +56,25 @@ void addClause(formulaList Ls, clause cls){
     }
 }
 
+void addUnitClause(formulaList * ls, clause cls){
+//    if(!Ls -> clause){
+//        Ls -> clause = cls ;
+//    }else{
+//        formulaList currP = Ls ;   //init : head
+//        formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
+//        newElemP -> next = currP ;
+//        newElemP -> clause = cls ;
+//        Ls = newElemP ;
+//        printf("%p", Ls) ;
+    if(! (*ls) -> clause){
+        (*ls) -> clause = cls ;
+    }else{
+        formulaList currp = * ls ;
+        *ls = (formulaList )malloc(sizeof(struct FormulaNode)) ;
+        (*ls) -> next = currp ;
+        (*ls) -> clause = cls ;
+    }
+}
 DeleteClauseStatus deleteClause(formulaList Ls, clause cls){
     #pragma mark - real delete
 //    formulaList currP = Ls ; //init : head
@@ -89,4 +113,40 @@ clause findUnitClause(formulaList Ls){
         currP = currP -> next ;
     }
     return NULL ;
+}
+
+clause findFirstStillClase(formulaList Ls){
+    formulaList currP = Ls ;
+    while (currP) {
+        if(currP -> clause -> clauseStatus == ClauseStatusStill)return currP -> clause ;
+        currP = currP -> next ;
+    }
+    return NULL ;
+}
+
+int emptyClauseInFormula(formulaList Ls){
+    formulaList currP = Ls ;
+    while (currP) {
+        if(isEmptyClause(* (currP -> clause)))return 1 ;
+        currP = currP -> next ;
+    }
+    return 0 ;
+}
+
+formulaList deepCpyFormulaList(formulaList Ls){
+    formulaList cpyList = NULL ;
+    init(&cpyList) ;
+    
+    formulaList currP = Ls ;
+    while (currP) {
+//        int literalNum = currP -> clause -> literalCount ;
+//        ClauseStatus clsStatus = currP -> clause -> clauseStatus ;
+//        int * literals = (int *)malloc(sizeof(int) * literalNum) ;
+//        memcpy(literals, currP -> clause -> literals, literalNum * sizeof(int)) ;
+//        clause cls = createClause(literalNum, clsStatus, literals) ;
+        clause cls = deepCpyClause(currP -> clause) ;
+        addClause(cpyList, cls) ;
+        currP = currP -> next ;
+    }
+    return cpyList ;
 }
