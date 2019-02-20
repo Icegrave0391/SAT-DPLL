@@ -7,16 +7,25 @@
 //
 
 #include "DPLLMethod.h"
-
+extern int totalLiteralCount, totalClauseCount ;
+extern int * allLiteralArr ;
 int DPLLWithFormula(formulaList fmList){
-    extern int totalLiteralCount, totalClauseCount ;
+//    extern int totalLiteralCount, totalClauseCount ;
     allLiteralArr = (int *)malloc(sizeof(int) * totalLiteralCount) ;
+    printf( "%d %d", totalLiteralCount, totalClauseCount) ;
     //remove&mark all unit clause and save unit literal
-    clause cls ;
+#pragma mark - REMOVE ALL UNIT CLAUSE
+    dealUnitClause(fmList, allLiteralArr) ;
+#pragma mark - CREATE UNIT STRATEGTY
+    return  0 ;
+}
+
+void dealUnitClause(formulaList fmList, int * literalArr){
+    clause cls = NULL ;
     while ((cls = findUnitClause(fmList))) {
         int literal = cls -> literals[0] ;
 #pragma mark - save literal status
-        allLiteralArr[abs(literal) - 1] = literal ;
+        literalArr[abs(literal) - 1] = literal ;
 #pragma mark - remove clause & literal
         formulaList currP = fmList ;
         while (currP) {
@@ -31,6 +40,4 @@ int DPLLWithFormula(formulaList fmList){
             currP = currP -> next ;
         }
     }
-    
-    return  0 ;
 }

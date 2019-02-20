@@ -13,6 +13,7 @@
 #include "CNFClause.h"
 #include "CNFFormula.h"
 
-int * allLiteralArr = NULL ;
 int DPLLWithFormula(formulaList fmList) ;
+
+void dealUnitClause(formulaList fmList, int * literalArr) ;
 #endif /* DPLLMethod_h */
