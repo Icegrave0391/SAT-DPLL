@@ -46,4 +46,6 @@ int isEmptyClause(Clause cls) ;
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal) ;
 void deleteLiteral(clause cls, int literal) ;
 int findRandomLiteral(clause cls) ;
+#pragma mark - WARNING!!! THIS METHOD SHOULD ONLY BE USED IN DPLL UNIT
+int findFirstLiteral(clause cls) ;
 #endif /* CNFClause_h */

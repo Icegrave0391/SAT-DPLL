@@ -51,6 +51,5 @@ formulaList loadCNFFileFormula(char * filePath){
             free(arr) ;
         }
     }
-    list ;
     return list;
 }
