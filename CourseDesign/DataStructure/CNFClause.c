@@ -8,9 +8,8 @@
 
 #include "CNFClause.h"
 #include <string.h>
-clause createClause(int literalNum, ClauseStatus clsStatus, int * literals){
+clause createClause(int literalNum, int * literals){
     clause cls = (clause)malloc(sizeof(Clause)) ;
-    cls -> clauseStatus = clsStatus ;
     cls -> literalCount = literalNum ;
     cls -> literals = (int *)malloc(sizeof(int) * literalNum) ;
     memcpy(cls -> literals, literals, literalNum * sizeof(int)) ;
@@ -19,10 +18,9 @@ clause createClause(int literalNum, ClauseStatus clsStatus, int * literals){
 
 clause deepCpyClause(clause aclause){
     int literalNum = aclause -> literalCount ;
-    ClauseStatus clsStatus = aclause -> clauseStatus ;
     int * literals = (int *)malloc(sizeof(int) * literalNum) ;
     memcpy(literals, aclause -> literals, literalNum * sizeof(int)) ;
-    clause cls = createClause(literalNum, clsStatus, literals) ;
+    clause cls = createClause(literalNum, literals) ;
     return cls ;
 }
 
@@ -92,7 +90,7 @@ void deleteLiteral(clause cls, int literal){
 
 int findRandomLiteral(clause cls){
 //    if(cls -> clauseStatus == ClauseStatusDeleted || isEmptyClause( *cls)) return 0 ;
-//    if(isEmptyClause( *cls)) return 0 ;
+//    if(
     for (int i = 0 ; i < cls -> literalCount; i++) {
         if(cls -> literals[i]) return cls -> literals[i] ;
     }

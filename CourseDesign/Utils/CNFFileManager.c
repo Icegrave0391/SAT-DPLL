@@ -43,7 +43,7 @@ formulaList loadCNFFileFormula(char * filePath){
 //            for (int i = 0; i < count; i ++) {
 //                printf("%d ",arr[i]) ;
 //            }printf("\n");
-            clause cls = createClause(count, ClauseStatusStill, arr) ;
+            clause cls = createClause(count, arr) ;
 //            for(int i = 0 ; i < cls -> literalCount ; i++){
 //                printf("%d ", cls -> literals[i]) ;
 //            }printf("\n") ;

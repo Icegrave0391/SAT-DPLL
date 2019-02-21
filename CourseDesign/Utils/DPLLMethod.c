@@ -24,7 +24,6 @@ int DPLLWithFormula(formulaList fmList){
 //                }printf("\n") ;
 //                curDebug = curDebug -> next ;
 //            }
-
     //condition
     if(isFormulaEmpty(fmList))return 1 ;
     else if(emptyClauseInFormula(fmList))return 0 ;
@@ -33,18 +32,16 @@ int DPLLWithFormula(formulaList fmList){
         clause cls = findFirstStillClase(fmList) ;
         int literal = findRandomLiteral(cls) ;
         int inverseLiteral = - literal ;
-        clause newUnitCls = createClause(1, ClauseStatusStill, &literal) ;
-        clause newUnitClsInverse = createClause(1, ClauseStatusStill, &inverseLiteral) ;
+        clause newUnitCls = createClause(1, &literal) ;
+        clause newUnitClsInverse = createClause(1, &inverseLiteral) ;
         formulaList cpyList = deepCpyFormulaList(fmList) ;
-//        addUnitClause(&cpyList, newUnitCls) ;
         addClause(cpyList, newUnitCls) ;
        // arr 未处理
         if(DPLLWithFormula(cpyList))return 1 ;
-//        addUnitClause(&fmList, newUnitClsInverse) ;
         addClause(fmList, newUnitClsInverse) ;
         return DPLLWithFormula(fmList) ;
     }
-} 
+}
 
 void dealUnitClause(formulaList * fmlist, int * literalArr){
     clause cls = NULL ;
