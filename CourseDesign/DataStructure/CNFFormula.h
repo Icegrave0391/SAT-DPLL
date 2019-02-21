@@ -35,7 +35,7 @@ int emptyClauseInFormula(formulaList Ls) ;
 void addClause(formulaList Ls, clause cls) ;
 void addUnitClause(formulaList * ls, clause cls) ;
 
-DeleteClauseStatus deleteClause(formulaList Ls, clause cls) ;
+DeleteClauseStatus deleteClause(formulaList * ls, clause cls) ;
 clause findUnitClause(formulaList Ls) ;
 clause findFirstStillClase(formulaList Ls) ;
 #pragma mark - formula cpy

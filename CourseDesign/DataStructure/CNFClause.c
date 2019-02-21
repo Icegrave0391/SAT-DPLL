@@ -28,16 +28,21 @@ clause deepCpyClause(clause aclause){
 
 //unit clause : 1.statusStill 2.literals contains only 1 elem not 0
 int isUnitClause (Clause cls){
-//    if(cls.literalCount == 1 && cls.clauseStatus == ClauseStatusStill)return 1 ;
-    if(cls.clauseStatus == ClauseStatusDeleted)return 0 ;
-    else{
-        int flag = 0 ;
-        for(int i = 0 ; i < cls.literalCount ; i++){
-            if(cls.literals[i]) flag++ ;
-        }
-        if (flag == 1)return 1 ;
-        return 0;
+//    if(cls.clauseStatus == ClauseStatusDeleted)return 0 ;
+//    else{
+//        int flag = 0 ;
+//        for(int i = 0 ; i < cls.literalCount ; i++){
+//            if(cls.literals[i]) flag++ ;
+//        }
+//        if (flag == 1)return 1 ;
+//        return 0;
+//    }
+    int flag = 0 ;
+    for(int i = 0 ; i < cls.literalCount ; i++){
+        if(cls.literals[i]) flag++ ;
     }
+    if (flag == 1)return 1 ;
+    return 0;
 }
 
 int isEmptyClause(Clause cls){
@@ -78,14 +83,6 @@ LiteralContainStatus literalStatusWithClause(Clause Cls, int literal){
     }
     return 0 ;
 }
-//
-//int evaluateClauseWithLiteral (Clause Cls, int literal){
-//    int iter = 0 ;
-//    while(iter < Cls.literalCount){
-//        if(Cls.literals[iter++] == literal) return 1 ;
-//    }
-//    return 0 ;
-//}
 
 void deleteLiteral(clause cls, int literal){
     for(int i = 0 ; i < cls -> literalCount ; i++){
@@ -94,7 +91,8 @@ void deleteLiteral(clause cls, int literal){
 }
 
 int findRandomLiteral(clause cls){
-    if(cls -> clauseStatus == ClauseStatusDeleted || isEmptyClause( *cls)) return 0 ;
+//    if(cls -> clauseStatus == ClauseStatusDeleted || isEmptyClause( *cls)) return 0 ;
+//    if(isEmptyClause( *cls)) return 0 ;
     for (int i = 0 ; i < cls -> literalCount; i++) {
         if(cls -> literals[i]) return cls -> literals[i] ;
     }

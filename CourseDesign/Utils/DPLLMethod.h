@@ -15,5 +15,5 @@
 
 int DPLLWithFormula(formulaList fmList) ;
 #pragma mark - WARNING !!! THIS METHOD SHOULD BE ONLY USED IN DPLL
-void dealUnitClause(formulaList fmList, int * literalArr) ;
+void dealUnitClause(formulaList * fmlist, int * literalArr) ;
 #endif /* DPLLMethod_h */

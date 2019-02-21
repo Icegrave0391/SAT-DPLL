@@ -17,20 +17,26 @@ int init(formulaList * ls){
 }
 
 int isFormulaEmpty(formulaList Ls){
-    formulaList currP = Ls ;
-    while (currP) {
-        if(currP -> clause -> clauseStatus == ClauseStatusStill) return 0 ;
-        currP = currP -> next ;
-    }
-    return 1 ;
+//    formulaList currP = Ls ;
+//    while (currP) {
+//        if(currP -> clause -> clauseStatus == ClauseStatusStill) return 0 ;
+//        currP = currP -> next ;
+//    }
+//    return 1 ;
+    if(!(Ls -> clause) && !(Ls -> next))return 1 ;
+    return 0 ;
 }
 
 int clauseNum(formulaList Ls){
     int count = 0 ;
     formulaList currP = Ls ;
-    while(currP){
-        if(currP -> clause -> clauseStatus == ClauseStatusStill) count ++ ;
-        currP = currP -> next;
+//    while(currP){
+//        if(currP -> clause -> clauseStatus == ClauseStatusStill) count ++ ;
+//        currP = currP -> next;
+//    }
+    while (currP) {
+        if(currP -> clause)count++ ;
+        currP = currP -> next ;
     }
     return count ;
 }
@@ -75,38 +81,53 @@ void addUnitClause(formulaList * ls, clause cls){
         (*ls) -> clause = cls ;
     }
 }
-DeleteClauseStatus deleteClause(formulaList Ls, clause cls){
+DeleteClauseStatus deleteClause(formulaList * ls, clause cls){
     #pragma mark - real delete
-//    formulaList currP = Ls ; //init : head
-//    formulaList prevP = NULL ;
-//    while((currP -> next) && (currP -> clause != cls)){
-//        prevP = currP ;
-//        currP = currP -> next ;
-//    }
-//    if(currP -> clause == cls){
-//        if(currP -> next){
-//            prevP -> next = currP -> next ;
-//        }
-//        else{
-//            prevP -> next = NULL ;
-//        }
-//        return 1 ;
-//    }else{     // no match clause
-//        return 0 ;
-//    }
-   #pragma mark - delete via status
-    formulaList currP = Ls ;
-    while (currP) {
-        if(currP -> clause -> clauseStatus == ClauseStatusStill && currP -> clause == cls){
-            currP -> clause -> clauseStatus = ClauseStatusDeleted ;
+// only one node
+    if(!((*ls) -> next)){
+        if ((*ls) -> clause == cls) {
+            (*ls) -> clause = NULL ;
+            return DeleteClauseStatusSuccessful ;
+        }else{
+            return DeleteClauseStatusNotFound ;
+        }
+    }
+//delete first node
+    else if((*ls) -> next && (*ls) -> clause == cls){
+        *ls =  (*ls) -> next ;
+        return DeleteClauseStatusSuccessful ;
+    }
+    else{
+        formulaList * currp = ls ;
+        formulaList * prevp = ls ;
+        while( ((*currp) -> next) && ((*currp) -> clause != cls)){
+            prevp = currp ;
+            currp = &(*currp) -> next ;
+        }
+        if((*currp) -> clause == cls){
+            if((*currp) -> next){
+                (*prevp) -> next = (*currp) -> next ;
+            }else{
+                (*prevp) -> next = NULL ;
+            }
             return DeleteClauseStatusSuccessful ;
         }
-        currP = currP -> next ;
+        return DeleteClauseStatusNotFound ;
     }
-    return DeleteClauseStatusNotFound ;
+   #pragma mark - delete via status
+//    formulaList currP = Ls ;
+//    while (currP) {
+//        if(currP -> clause -> clauseStatus == ClauseStatusStill && currP -> clause == cls){
+//            currP -> clause -> clauseStatus = ClauseStatusDeleted ;
+//            return DeleteClauseStatusSuccessful ;
+//        }
+//        currP = currP -> next ;
+//    }
+//    return DeleteClauseStatusNotFound ;
 }
 
 clause findUnitClause(formulaList Ls){
+    if(isFormulaEmpty(Ls))return NULL ;
     formulaList currP = Ls ;
     while (currP) {
         if(isUnitClause(* (currP -> clause)))return currP -> clause ;
@@ -116,12 +137,14 @@ clause findUnitClause(formulaList Ls){
 }
 
 clause findFirstStillClase(formulaList Ls){
-    formulaList currP = Ls ;
-    while (currP) {
-        if(currP -> clause -> clauseStatus == ClauseStatusStill)return currP -> clause ;
-        currP = currP -> next ;
-    }
-    return NULL ;
+//    formulaList currP = Ls ;
+//    while (currP) {
+//        if(currP -> clause -> clauseStatus == ClauseStatusStill)return currP -> clause ;
+//        currP = currP -> next ;
+//    }
+//    return NULL ;
+    if(isFormulaEmpty(Ls))return NULL ;
+    else return Ls -> clause ;
 }
 
 int emptyClauseInFormula(formulaList Ls){
