@@ -51,5 +51,11 @@ formulaList loadCNFFileFormula(char * filePath){
             free(arr) ;
         }
     }
+    fclose(fp) ;
     return list;
+}
+
+void exportDPLLResultFile(char * filePath, int * literalsArr, int DPLLResult){
+    FILE * fp = NULL ;
+    
 }

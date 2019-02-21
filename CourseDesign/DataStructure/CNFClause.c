@@ -25,6 +25,7 @@ clause deepCpyClause(clause aclause){
     clause cls = createClause(literalNum, clsStatus, literals) ;
     return cls ;
 }
+
 //unit clause : 1.statusStill 2.literals contains only 1 elem not 0
 int isUnitClause (Clause cls){
 //    if(cls.literalCount == 1 && cls.clauseStatus == ClauseStatusStill)return 1 ;

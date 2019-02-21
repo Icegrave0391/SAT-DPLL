@@ -10,12 +10,21 @@
 extern int totalLiteralCount, totalClauseCount ;
 extern int * allLiteralArr ;
 int DPLLWithFormula(formulaList fmList){
-//    extern int totalLiteralCount, totalClauseCount ;
-    allLiteralArr = (int *)malloc(sizeof(int) * totalLiteralCount) ;
     //remove&mark all unit clause and save unit literal
 #pragma mark - REMOVE ALL UNIT CLAUSE
     dealUnitClause(fmList, allLiteralArr) ;
     //debug
+    
+//            formulaList curDebug = fmList ;
+//            printf("\n") ;
+//            while (curDebug) {
+//                printf("status: %d\n", curDebug -> clause -> clauseStatus) ;
+//                for (int i = 0; i < curDebug -> clause -> literalCount; i++) {
+//                    printf("%d ",curDebug -> clause -> literals[i]) ;
+//                }printf("\n") ;
+//                curDebug = curDebug -> next ;
+//            }
+
     //condition
     if(isFormulaEmpty(fmList))return 1 ;
     else if(emptyClauseInFormula(fmList))return 0 ;

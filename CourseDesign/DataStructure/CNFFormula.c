@@ -139,11 +139,6 @@ formulaList deepCpyFormulaList(formulaList Ls){
     
     formulaList currP = Ls ;
     while (currP) {
-//        int literalNum = currP -> clause -> literalCount ;
-//        ClauseStatus clsStatus = currP -> clause -> clauseStatus ;
-//        int * literals = (int *)malloc(sizeof(int) * literalNum) ;
-//        memcpy(literals, currP -> clause -> literals, literalNum * sizeof(int)) ;
-//        clause cls = createClause(literalNum, clsStatus, literals) ;
         clause cls = deepCpyClause(currP -> clause) ;
         addClause(cpyList, cls) ;
         currP = currP -> next ;
