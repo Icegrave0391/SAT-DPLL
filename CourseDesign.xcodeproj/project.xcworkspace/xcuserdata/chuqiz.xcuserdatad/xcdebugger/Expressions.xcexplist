@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DPLLWithFormula:DPLLMethod.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "literals[2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:main.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "*(literalClauseArr+2)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "findUnitClause:CNFFormula.c">
+      </ContextState>
+      <ContextState
+         contextName = "isUnitClause:CNFClause.c">
+      </ContextState>
+      <ContextState
+         contextName = "addClause:CNFFormula.c">
+      </ContextState>
+      <ContextState
+         contextName = "createClause:CNFClause.c">
+      </ContextState>
+      <ContextState
+         contextName = "addUnitClause:CNFFormula.c">
+      </ContextState>
+      <ContextState
+         contextName = "loadCNFFileFormula:CNFFileManager.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "literalClauseArr[1]">
+            </PersistentString>
+            <PersistentString
+               value = "*(literalClauseArr + 2)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "deleteClause:CNFFormula.c">
+      </ContextState>
+      <ContextState
+         contextName = "deleteLiteral:CNFClause.c">
+      </ContextState>
+      <ContextState
+         contextName = "dealUnitClause:DPLLMethod.c">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

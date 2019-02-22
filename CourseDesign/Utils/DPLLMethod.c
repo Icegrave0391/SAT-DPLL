@@ -25,7 +25,6 @@ int DPLLWithFormula(formulaList fmList){
 //                }printf("\n") ;
 //                curDebug = curDebug -> next ;
 //            }
-
     //condition
     if(isFormulaEmpty(fmList))return 1 ;
     else if(emptyClauseInFormula(fmList))return 0 ;
@@ -41,7 +40,7 @@ int DPLLWithFormula(formulaList fmList){
         dealNewUnitClause(&fmList, allLiteralArr, inverseLiteral) ;
         return DPLLWithFormula(fmList) ;
     }
-} 
+}
 
 void dealUnitClause(formulaList * fmlist, int * literalArr){
     clause cls = NULL ;
