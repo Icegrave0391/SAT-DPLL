@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/u-5cnf_3500_3500_30f1.shuffled-30.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/u-5cnf_3900_3900_060.shuffled-60.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/功能测试/unsat-5cnf-30.cnf") ;
-    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/性能测试/ais10.cnf") ;
+//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/性能测试/ais10.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/hh.cnf") ;
 //    char * filePath = "/Users/chuqiz/2018/CourseDesign/SAT/满足算例/M/bart17.shuffled-231.cnf" ;
 //    list = loadCNFFileFormula(filePath) ;
