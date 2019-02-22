@@ -16,15 +16,15 @@ int DPLLWithFormula(formulaList fmList){
     dealUnitClause(&fmList, allLiteralArr) ;
 //    debug
 //    
-//            formulaList curDebug = fmList ;
-//            printf("\n") ;
-//            while (curDebug && curDebug -> clause) {
+            formulaList curDebug = fmList ;
+            printf("\n") ;
+            while (curDebug && curDebug -> clause) {
 //                printf("status: %d\n", curDebug -> clause -> clauseStatus) ;
-//                for (int i = 0; i < curDebug -> clause -> literalCount; i++) {
-//                    printf("%d ",curDebug -> clause -> literals[i]) ;
-//                }printf("\n") ;
-//                curDebug = curDebug -> next ;
-//            }
+                for (int i = 0; i < curDebug -> clause -> literalCount; i++) {
+                    printf("%d ",curDebug -> clause -> literals[i]) ;
+                }printf("\n") ;
+                curDebug = curDebug -> next ;
+            }
     //condition
     if(isFormulaEmpty(fmList))return 1 ;
     else if(emptyClauseInFormula(fmList))return 0 ;

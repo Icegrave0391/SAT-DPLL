@@ -44,7 +44,7 @@ formulaList loadCNFFileFormula(char * filePath){
             while(fscanf(fp, "%d",&literal) && literal){
                 arr[count ++] = literal ;
             }
-            clause cls = createClause(count, ClauseStatusStill, arr) ;
+            clause cls = createClause(count, arr) ;
             for (int i = 0 ; i < count ; i++) {
                 int literal = arr[i] ;
                 literal > 0 ? addClause(&literalClauseArr[literal * 2 - 2], cls) : addClause(&literalClauseArr[literal * (-2) - 1], cls) ;
