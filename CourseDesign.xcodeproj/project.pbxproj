@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083FDE4A2220158E006DB7B0 /* CNFLiteralStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 083FDE492220158E006DB7B0 /* CNFLiteralStack.c */; };
 		08C63FA2221AC2C500979192 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FA1221AC2C500979192 /* main.c */; };
 		08C63FAA221AC34400979192 /* CNFFileManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FA9221AC34400979192 /* CNFFileManager.c */; };
 		08C63FB0221AC9BB00979192 /* CNFFormula.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FAF221AC9BB00979192 /* CNFFormula.c */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		083FDE482220158E006DB7B0 /* CNFLiteralStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNFLiteralStack.h; sourceTree = "<group>"; };
+		083FDE492220158E006DB7B0 /* CNFLiteralStack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CNFLiteralStack.c; sourceTree = "<group>"; };
 		08C63F9E221AC2C500979192 /* CourseDesign */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CourseDesign; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C63FA1221AC2C500979192 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		08C63FA8221AC34400979192 /* CNFFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNFFileManager.h; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				08C63FB2221ACDDE00979192 /* CNFClause.c */,
 				08C63FAE221AC9BB00979192 /* CNFFormula.h */,
 				08C63FAF221AC9BB00979192 /* CNFFormula.c */,
+				083FDE482220158E006DB7B0 /* CNFLiteralStack.h */,
+				083FDE492220158E006DB7B0 /* CNFLiteralStack.c */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			files = (
 				08C63FB3221ACDDE00979192 /* CNFClause.c in Sources */,
 				08C63FA2221AC2C500979192 /* main.c in Sources */,
+				083FDE4A2220158E006DB7B0 /* CNFLiteralStack.c in Sources */,
 				08C63FAA221AC34400979192 /* CNFFileManager.c in Sources */,
 				08CDC0B8221BE99E002BF883 /* DPLLMethod.c in Sources */,
 				08C63FB0221AC9BB00979192 /* CNFFormula.c in Sources */,

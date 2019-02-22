@@ -42,6 +42,7 @@ int clauseNum(formulaList Ls){
 }
 
 void addClause(formulaList * ls, clause cls){
+    cls -> clauseStatus = ClauseStatusStill ;
     if(!(*ls)){
         (*ls) = (formulaList)malloc(sizeof(struct FormulaNode)) ;
         (*ls) -> clause = cls ;
@@ -69,6 +70,7 @@ void addClause(formulaList * ls, clause cls){
 }
 
 void addUnitClause(formulaList * ls, clause cls){
+    cls -> clauseStatus = ClauseStatusStill ;
 //    if(!Ls -> clause){
 //        Ls -> clause = cls ;
 //    }else{
@@ -93,6 +95,7 @@ DeleteClauseStatus deleteClause(formulaList * ls, clause cls){
     if(!((*ls) -> next)){
         if ((*ls) -> clause == cls) {
             (*ls) -> clause = NULL ;
+            cls -> clauseStatus = ClauseStatusDeleted ;
             return DeleteClauseStatusSuccessful ;
         }else{
             return DeleteClauseStatusNotFound ;
@@ -101,6 +104,7 @@ DeleteClauseStatus deleteClause(formulaList * ls, clause cls){
 //delete first node
     else if((*ls) -> next && (*ls) -> clause == cls){
         *ls =  (*ls) -> next ;
+        cls -> clauseStatus = ClauseStatusDeleted ;
         return DeleteClauseStatusSuccessful ;
     }
     else{
@@ -116,6 +120,7 @@ DeleteClauseStatus deleteClause(formulaList * ls, clause cls){
             }else{
                 (*prevp) -> next = NULL ;
             }
+            cls -> clauseStatus = ClauseStatusDeleted ;
             return DeleteClauseStatusSuccessful ;
         }
         return DeleteClauseStatusNotFound ;

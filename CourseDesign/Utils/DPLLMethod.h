@@ -12,10 +12,10 @@
 #include <stdio.h>
 #include "CNFClause.h"
 #include "CNFFormula.h"
-
-int DPLLWithFormula(formulaList fmList) ;
+#include "CNFLiteralStack.h"
+int DPLLWithFormula(formulaList * fmList) ;
 #pragma mark - WARNING !!! THESE METHOD SHOULD BE ONLY USED IN DPLL
 void dealUnitClause(formulaList * fmlist, int * literalArr) ;
 void dealNewUnitClause(formulaList * fmlist, int * literalArr, int literal) ;
-void undoFormula(formulaList * fmlist, formulaList literalList, int literal) ;
+void undoFormula(formulaList * fmlist, formulaList literalList, formulaList inverseLiteralList, int literal) ;
 #endif /* DPLLMethod_h */

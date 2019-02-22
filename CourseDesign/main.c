@@ -10,25 +10,36 @@
 #include <time.h>
 #include "CNFFileManager.h"
 #include "DPLLMethod.h"
+#include "CNFLiteralStack.h"
 
 #pragma mark - extern members
 int totalLiteralCount, totalClauseCount ;
 int * allLiteralArr = NULL ;
 formulaList * literalClauseArr = NULL ;
+Stack * literalStack ;
+int * depth ;
 
 int main(int argc, const char * argv[]) {
+    //init
     formulaList list ;
+    literalStack = initStack() ;
+    depth = (int *)malloc(sizeof(int)) ;
+    *depth = 0 ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/tst_v10_c100.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/eu-rand_net60-25-10.shuffled-3000.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/u-5cnf_3500_3500_30f1.shuffled-30.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/不满足算例/u-5cnf_3900_3900_060.shuffled-60.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/功能测试/unsat-5cnf-30.cnf") ;
-    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/性能测试/ais10.cnf") ;
+//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/功能测试/sat-20.cnf") ;
+//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/性能测试/ais10.cnf") ;
+     list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/基准算例/性能测试/sud00009.cnf") ;
 //    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/hh.cnf") ;
 //    char * filePath = "/Users/chuqiz/2018/CourseDesign/SAT/满足算例/M/bart17.shuffled-231.cnf" ;
 //    list = loadCNFFileFormula(filePath) ;
+//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/back.cnf") ;
+//    list = loadCNFFileFormula("/Users/chuqiz/2018/CourseDesign/SAT/backnew.cnf") ;
     allLiteralArr = (int *)malloc(sizeof(int) * totalLiteralCount) ;
-    for (int i = 0 ; i < totalLiteralCount ; i ++) {
+    for (int i = 0 ; i < totalLiteralCount ; i++) {
 //        allLiteralArr[i] = i+1 ;
         allLiteralArr[i] = 0 ;
     }
@@ -37,7 +48,7 @@ int main(int argc, const char * argv[]) {
     double timeinterval ;
 
     start_t = clock() ;
-    if(DPLLWithFormula(list)){
+    if(DPLLWithFormula(&list)){
         end_t = clock() ;
         
         printf("s 1\n") ;

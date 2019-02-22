@@ -100,8 +100,13 @@ int findRandomLiteral(clause cls){
 }
 
 void recoverLiteral(clause cls, int literal){
-    for (int i = 0 ; i < cls -> literalCount ; i++) {
-        if(!cls -> literals[i]) cls -> literals[i] = 0 ;
+    if(cls -> clauseStatus == ClauseStatusStill){
+        for (int i = 0 ; i < cls -> literalCount ; i++) {
+            if(!cls -> literals[i]) {
+                cls -> literals[i] = literal ;
+                return ;
+            }
+        }
     }
 }
 
