@@ -99,6 +99,12 @@ int findRandomLiteral(clause cls){
     return 0 ;
 }
 
+void recoverLiteral(clause cls, int literal){
+    for (int i = 0 ; i < cls -> literalCount ; i++) {
+        if(!cls -> literals[i]) cls -> literals[i] = 0 ;
+    }
+}
+
 int findFirstLiteral(clause cls){
     for (int i = 0 ; i < cls -> literalCount ; i++) {
         if (cls -> literals[i]) {

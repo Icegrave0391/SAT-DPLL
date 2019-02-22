@@ -9,6 +9,7 @@
 #include "DPLLMethod.h"
 extern int totalLiteralCount, totalClauseCount ;
 extern int * allLiteralArr ;
+extern formulaList * literalClauseArr ;
 int DPLLWithFormula(formulaList fmList){
     //remove&mark all unit clause and save unit literal
 #pragma mark - REMOVE ALL UNIT CLAUSE
@@ -33,17 +34,11 @@ int DPLLWithFormula(formulaList fmList){
         clause cls = findFirstStillClase(fmList) ;
         int literal = findRandomLiteral(cls) ;
         int inverseLiteral = - literal ;
-//        clause newUnitCls = createClause(1, ClauseStatusStill, &literal) ;
-//        clause newUnitClsInverse = createClause(1, ClauseStatusStill, &inverseLiteral) ;
-        formulaList cpyList = deepCpyFormulaList(fmList) ;
-//        addUnitClause(&cpyList, newUnitCls) ;
-//        addClause(cpyList, newUnitCls) ;
-        dealNewUnitClause(&cpyList, allLiteralArr, literal) ;
-       // arr 未处理
-        if(DPLLWithFormula(cpyList))return 1 ;
-//        addUnitClause(&fmList, newUnitClsInverse) ;
-//        addClause(fmList, newUnitClsInverse) ;
-        dealNewUnitClause(&fmList, allLiteralArr, -literal) ;
+        dealNewUnitClause(&fmList, allLiteralArr, literal) ;
+        if(DPLLWithFormula(fmList))return 1 ;
+        formulaList literalFormula = literal > 0 ? literalClauseArr[literal * 2 - 2] : literalClauseArr[literal * (-2) - 1] ;
+        undoFormula(&fmList, literalFormula, literal) ;
+        dealNewUnitClause(&fmList, allLiteralArr, inverseLiteral) ;
         return DPLLWithFormula(fmList) ;
     }
 } 
@@ -86,4 +81,19 @@ void dealNewUnitClause(formulaList * fmlist, int * literalArr, int literal){
         }
         currP = currP -> next ;
     }
+}
+
+void undoFormula(formulaList * fmlist, formulaList literalList, int literal){
+    formulaList currP = literalList ;
+    while (currP) {
+        clause cls = currP -> clause ;
+        recoverLiteral(cls, literal) ;
+        int flag = 0 ;
+        for (int i = 0 ; i < cls -> literalCount ; i++) {
+            if(!allLiteralArr[abs(cls -> literals[i]) - 1])flag++ ;
+        }
+        if(flag == 1)addClause(fmlist, cls) ;
+        currP = currP -> next ;
+    }
+    
 }
