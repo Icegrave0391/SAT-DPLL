@@ -32,7 +32,7 @@ int clauseNum(formulaList Ls) ;
 int emptyClauseInFormula(formulaList Ls) ;
 #pragma mark - clause operations
 #pragma mark - *****WARNING ONLY USE ADD UNIT WHILE DPLL
-void addClause(formulaList Ls, clause cls) ;
+void addClause(formulaList * ls, clause cls) ;
 void addUnitClause(formulaList * ls, clause cls) ;
 
 DeleteClauseStatus deleteClause(formulaList * ls, clause cls) ;

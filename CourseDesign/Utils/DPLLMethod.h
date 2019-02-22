@@ -14,6 +14,7 @@
 #include "CNFFormula.h"
 
 int DPLLWithFormula(formulaList fmList) ;
-#pragma mark - WARNING !!! THIS METHOD SHOULD BE ONLY USED IN DPLL
+#pragma mark - WARNING !!! THESE METHOD SHOULD BE ONLY USED IN DPLL
 void dealUnitClause(formulaList * fmlist, int * literalArr) ;
+void dealNewUnitClause(formulaList * fmlist, int * literalArr, int literal) ;
 #endif /* DPLLMethod_h */

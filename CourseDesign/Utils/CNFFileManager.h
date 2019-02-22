@@ -15,5 +15,6 @@
 
 #pragma mark - read CNF file
 formulaList loadCNFFileFormula(char * filePath) ;
+//void loadCNFFileNumberPara(char * filePath) ;
 void exportDPLLResultFile(char * filePath, int * literalsArr, int DPLLResult) ;
 #endif /* CNFFileManager_h */

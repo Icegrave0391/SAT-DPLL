@@ -41,24 +41,30 @@ int clauseNum(formulaList Ls){
     return count ;
 }
 
-void addClause(formulaList Ls, clause cls){
-    if(!Ls -> clause){
-//        formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
-//        newElemP -> next = NULL ;
-//        newElemP -> clause = cls ;
-//        Ls = newa
-        Ls -> clause = cls ;
+void addClause(formulaList * ls, clause cls){
+    if(!(*ls)){
+        (*ls) = (formulaList)malloc(sizeof(struct FormulaNode)) ;
+        (*ls) -> clause = cls ;
+        (*ls) -> next = NULL ;
     }else{
-        formulaList currP = Ls ;   //init : head
-        formulaList tailP = NULL ;
-        while (currP) {
-            tailP = currP ;
-            currP = currP -> next ;
+        if(!(*ls) -> clause){
+            //        formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
+            //        newElemP -> next = NULL ;
+            //        newElemP -> clause = cls ;
+            //        (*ls) = newa
+            (*ls) -> clause = cls ;
+        }else{
+            formulaList currP = (*ls) ;   //init : head
+            formulaList tailP = NULL ;
+            while (currP) {
+                tailP = currP ;
+                currP = currP -> next ;
+            }
+            formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
+            newElemP -> next = NULL ;
+            newElemP -> clause = cls ;
+            tailP -> next = newElemP ;
         }
-        formulaList newElemP = (formulaList)malloc(sizeof(struct FormulaNode)) ;
-        newElemP -> next = NULL ;
-        newElemP -> clause = cls ;
-        tailP -> next = newElemP ;
     }
 }
 
@@ -163,7 +169,7 @@ formulaList deepCpyFormulaList(formulaList Ls){
     formulaList currP = Ls ;
     while (currP) {
         clause cls = deepCpyClause(currP -> clause) ;
-        addClause(cpyList, cls) ;
+        addClause(&cpyList, cls) ;
         currP = currP -> next ;
     }
     return cpyList ;

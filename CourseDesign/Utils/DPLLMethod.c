@@ -33,15 +33,17 @@ int DPLLWithFormula(formulaList fmList){
         clause cls = findFirstStillClase(fmList) ;
         int literal = findRandomLiteral(cls) ;
         int inverseLiteral = - literal ;
-        clause newUnitCls = createClause(1, ClauseStatusStill, &literal) ;
-        clause newUnitClsInverse = createClause(1, ClauseStatusStill, &inverseLiteral) ;
+//        clause newUnitCls = createClause(1, ClauseStatusStill, &literal) ;
+//        clause newUnitClsInverse = createClause(1, ClauseStatusStill, &inverseLiteral) ;
         formulaList cpyList = deepCpyFormulaList(fmList) ;
 //        addUnitClause(&cpyList, newUnitCls) ;
-        addClause(cpyList, newUnitCls) ;
+//        addClause(cpyList, newUnitCls) ;
+        dealNewUnitClause(&cpyList, allLiteralArr, literal) ;
        // arr 未处理
         if(DPLLWithFormula(cpyList))return 1 ;
 //        addUnitClause(&fmList, newUnitClsInverse) ;
-        addClause(fmList, newUnitClsInverse) ;
+//        addClause(fmList, newUnitClsInverse) ;
+        dealNewUnitClause(&fmList, allLiteralArr, -literal) ;
         return DPLLWithFormula(fmList) ;
     }
 } 
@@ -65,5 +67,23 @@ void dealUnitClause(formulaList * fmlist, int * literalArr){
             }
             currP = currP -> next ;
         }
+    }
+}
+
+void dealNewUnitClause(formulaList * fmlist, int * literalArr, int literal){
+#pragma mark - save literal status
+    literalArr[abs(literal) - 1] = literal ;
+#pragma mark - remove clause & literal
+    formulaList currP = * fmlist ;
+    while (currP) {
+        //remove clause
+        if(literalStatusWithClause(* (currP -> clause), literal) == LiteralContainStatusContain || literalStatusWithClause( * currP -> clause, literal) == LiteralContainStatusContainBoth){
+            deleteClause(fmlist, currP -> clause) ;
+        }
+        //remove literal
+        else if(literalStatusWithClause(* (currP -> clause), literal) == LiteralContainStatusContainInverse){
+            deleteLiteral(currP -> clause, -literal) ;
+        }
+        currP = currP -> next ;
     }
 }

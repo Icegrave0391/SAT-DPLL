@@ -12,6 +12,7 @@ formulaList loadCNFFileFormula(char * filePath){
     FILE * fp = NULL ;
     int literal ;
     int literalNum, clauseNum ;
+    extern formulaList * literalClauseArr ;
 #pragma mark - create formula list
     formulaList list = NULL;
     init(&list) ;
@@ -31,6 +32,10 @@ formulaList loadCNFFileFormula(char * filePath){
         extern int totalLiteralCount, totalClauseCount ;
         totalLiteralCount = literalNum ;
         totalClauseCount = clauseNum ;
+        literalClauseArr = (formulaList *)malloc(sizeof(formulaList) * totalLiteralCount * 2) ;
+        for (int i = 0 ; i < totalLiteralCount * 2 ; i++) {
+            literalClauseArr[i] = NULL ;
+        }
 #pragma mark - literals operate
         //read literals
         for(int i = 0 ; i < clauseNum ; i++){
@@ -39,15 +44,12 @@ formulaList loadCNFFileFormula(char * filePath){
             while(fscanf(fp, "%d",&literal) && literal){
                 arr[count ++] = literal ;
             }
-            
-//            for (int i = 0; i < count; i ++) {
-//                printf("%d ",arr[i]) ;
-//            }printf("\n");
             clause cls = createClause(count, ClauseStatusStill, arr) ;
-//            for(int i = 0 ; i < cls -> literalCount ; i++){
-//                printf("%d ", cls -> literals[i]) ;
-//            }printf("\n") ;
-            addClause(list, cls) ;
+            for (int i = 0 ; i < count ; i++) {
+                int literal = arr[i] ;
+                literal > 0 ? addClause(&literalClauseArr[literal * 2 - 2], cls) : addClause(&literalClauseArr[literal * (-2) - 1], cls) ;
+            }
+            addClause(&list, cls) ;
             free(arr) ;
         }
     }
