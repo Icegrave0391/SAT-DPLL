@@ -51,6 +51,7 @@ int DPLLWithFormula(formulaList * fmList){
 //            }printf("\n") ;
 //            bugg = bugg -> next ;
 //        }
+        
         int popLiteral ;
         while ((popLiteral = pop(literalStack)) != literal) {
             int inversePopLiteral = -popLiteral ;

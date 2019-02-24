@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0802F8892222E9E20001544E /* SudokuTransfer.c in Sources */ = {isa = PBXBuildFile; fileRef = 0802F8872222E9E20001544E /* SudokuTransfer.c */; };
 		083FDE4A2220158E006DB7B0 /* CNFLiteralStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 083FDE492220158E006DB7B0 /* CNFLiteralStack.c */; };
 		08C63FA2221AC2C500979192 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FA1221AC2C500979192 /* main.c */; };
 		08C63FAA221AC34400979192 /* CNFFileManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 08C63FA9221AC34400979192 /* CNFFileManager.c */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0802F8872222E9E20001544E /* SudokuTransfer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SudokuTransfer.c; sourceTree = "<group>"; };
+		0802F8882222E9E20001544E /* SudokuTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuTransfer.h; sourceTree = "<group>"; };
 		083FDE482220158E006DB7B0 /* CNFLiteralStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNFLiteralStack.h; sourceTree = "<group>"; };
 		083FDE492220158E006DB7B0 /* CNFLiteralStack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CNFLiteralStack.c; sourceTree = "<group>"; };
 		08C63F9E221AC2C500979192 /* CourseDesign */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CourseDesign; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +91,8 @@
 				08CDC0B7221BE99E002BF883 /* DPLLMethod.c */,
 				08C63FA8221AC34400979192 /* CNFFileManager.h */,
 				08C63FA9221AC34400979192 /* CNFFileManager.c */,
+				0802F8872222E9E20001544E /* SudokuTransfer.c */,
+				0802F8882222E9E20001544E /* SudokuTransfer.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				083FDE4A2220158E006DB7B0 /* CNFLiteralStack.c in Sources */,
 				08C63FAA221AC34400979192 /* CNFFileManager.c in Sources */,
 				08CDC0B8221BE99E002BF883 /* DPLLMethod.c in Sources */,
+				0802F8892222E9E20001544E /* SudokuTransfer.c in Sources */,
 				08C63FB0221AC9BB00979192 /* CNFFormula.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
