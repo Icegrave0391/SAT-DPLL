@@ -1,5 +1,5 @@
 # CourseDesign
-
+Copyright © 2019 icegrave0391. All rights reserved.    
 *四种功能实现模块* :    
 + CNF范式求解模块     
 > DPLL
@@ -96,7 +96,7 @@ formulaList deepCpyFormulaList(formulaList Ls) ;
 ### API
 ```
 //this method create beginning board to both constraints .sud file and .cnf file    
-//数独转化SAT
+//数独转化SAT(生成.sud数独约束文件 以及.cnf 求解文件)
 int transferConstraintToFile(int sudoku[9][9]) ;    
 
 //should only be sudoku constraint literal (111 - 999 without number 0)    
