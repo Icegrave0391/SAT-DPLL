@@ -87,6 +87,7 @@ formulaList deepCpyFormulaList(formulaList Ls) ;
 ## CNFFileManager 
 ``` formulaList loadCNFFileFormula(char * filePath) ; ```   
 > 解析CNF文件，并返回其存储公式    
+
 ``` int exportDPLLResultFile(char * filePath, int * literalsArr, int DPLLResult, double timeinterval) ; ```
 > 将公式最终解导出.res文件    
 > DPLLResult对应返回值有无解， timeinterval对应clock
