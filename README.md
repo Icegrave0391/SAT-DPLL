@@ -6,6 +6,7 @@
 + 数独游戏生成模块
 > LasVegas + 挖洞
 + 文件操作模块
+> extern int totalLiteralCount, totalClauseCount读取信息
 + 数独转化SAT问题
 > minimal encoing + extended encoding
 
