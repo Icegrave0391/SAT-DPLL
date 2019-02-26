@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "createSudoku:SudokuTransfer.c">
+      </ContextState>
+      <ContextState
+         contextName = "recursionSudoku:SudokuTransfer.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "(sudoku + 1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "showModule:UILink.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "sudokuBoard">
+            </PersistentString>
+            <PersistentString
+               value = "sudokuSolution">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "transferConstraintToFile:SudokuTransfer.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "liter">
+            </PersistentString>
+            <PersistentString
+               value = "sudliter">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
