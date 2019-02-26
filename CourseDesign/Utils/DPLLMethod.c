@@ -8,7 +8,7 @@
 
 #include "DPLLMethod.h"
 #include <string.h>
-extern int totalLiteralCount, totalClauseCount ;
+extern int totalLiteralCount, totalClauseCount, emptyClause;
 extern int * allLiteralArr ;
 int DPLLWithFormula(formulaList fmList){
     //remove&mark all unit clause and save unit literal
@@ -31,25 +31,28 @@ int DPLLWithFormula(formulaList fmList){
     else if(emptyClauseInFormula(fmList))return 0 ;
 #pragma mark - CREATE UNIT STRATEGTY
     else{
-        int currentArr[totalLiteralCount] ;
-        memcpy(currentArr, allLiteralArr, totalLiteralCount * sizeof(int)) ;
-//        clause cls = findFirstStillClase(fmList) ;
-//        int literal = findRandomLiteral(cls) ;
-        int literal = findLiteral() ;
+//        int currentArr[totalLiteralCount] ;
+//        memcpy(currentArr, allLiteralArr, totalLiteralCount * sizeof(int)) ;
+        clause cls = findFirstStillClase(fmList) ;
+        int literal = findRandomLiteral(cls) ;
+//        int literal = findLiteral() ;
         
         int inverseLiteral = - literal ;
-//        clause newUnitCls = createClause(1, ClauseStatusStill, &literal) ;
-//        clause newUnitClsInverse = createClause(1, ClauseStatusStill, &inverseLiteral) ;
         formulaList cpyList = deepCpyFormulaList(fmList) ;
-//        addUnitClause(&cpyList, newUnitCls) ;
-//        addClause(cpyList, newUnitCls) ;
-        dealNewUnitClause(&cpyList, allLiteralArr, literal) ;
+//        dealNewUnitClause(&cpyList, allLiteralArr, literal) ;
+        clause newcls = NULL ;
+        initClause(&newcls) ;
+        newcls -> literal = literal ;
+        newcls -> next = NULL ;
+        addClause(&cpyList, newcls) ;
        // arr 未处理
         if(DPLLWithFormula(cpyList))return 1 ;
-//        addUnitClause(&fmList, newUnitClsInverse) ;
-//        addClause(fmList, newUnitClsInverse) ;
-        memcpy(allLiteralArr, currentArr, totalLiteralCount * sizeof(int)) ;
-        dealNewUnitClause(&fmList, allLiteralArr, inverseLiteral) ;
+//        dealNewUnitClause(&fmList, allLiteralArr, inverseLiteral) ;
+        clause ivsNewcls = NULL ;
+        initClause(&ivsNewcls) ;
+        ivsNewcls -> literal = inverseLiteral ;
+        ivsNewcls -> next = NULL ;
+        addClause(&fmList, ivsNewcls) ;
         return DPLLWithFormula(fmList) ;
     }
 } 
@@ -69,7 +72,7 @@ void dealUnitClause(formulaList * fmlist, int * literalArr){
             }
             //remove literal
             else if(literalStatusWithClause(* (currP -> clause), literal) == LiteralContainStatusContainInverse){
-                deleteLiteral(currP -> clause, -literal) ;
+                deleteLiteral(&currP -> clause, -literal) ;
             }
             currP = currP -> next ;
         }
@@ -88,7 +91,7 @@ void dealNewUnitClause(formulaList * fmlist, int * literalArr, int literal){
         }
         //remove literal
         else if(literalStatusWithClause(* (currP -> clause), literal) == LiteralContainStatusContainInverse){
-            deleteLiteral(currP -> clause, -literal) ;
+            deleteLiteral(&currP -> clause, -literal) ;
         }
         currP = currP -> next ;
     }

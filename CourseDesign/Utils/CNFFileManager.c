@@ -33,14 +33,17 @@ formulaList loadCNFFileFormula(char * filePath){
 #pragma mark - literals operate
         //read literals
         for(int i = 0 ; i < clauseNum ; i++){
-            int count = 0 ;
-            int * arr = (int *)malloc(sizeof(int) * literalNum) ;
+//            int count = 0 ;
+//            int * arr = (int *)malloc(sizeof(int) * literalNum) ;
+            clause cls = NULL ;
+            initClause(&cls) ;
             while(fscanf(fp, "%d",&literal) && literal){
-                arr[count ++] = literal ;
+//                arr[count ++] = literal ;
+                addLiteral(&cls, literal) ;
             }
-            clause cls = createClause(count, arr) ;
+//            clause cls = createClause(count, arr) ;
             addClause(&list, cls) ;
-            free(arr) ;
+//            free(arr) ;
         }
     }
     fclose(fp) ;

@@ -15,6 +15,7 @@
 
 #pragma mark - extern members
 int totalLiteralCount, totalClauseCount ;
+int emptyClause = 0 ;
 int * allLiteralArr = NULL ;
 int sudokuBoard[9][9] = {0} ;
 int sudokuSolution[9][9] = {0} ;

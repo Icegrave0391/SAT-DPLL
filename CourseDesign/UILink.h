@@ -23,6 +23,6 @@ extern int r[9][10] ;
 extern int c[9][10] ;
 extern int b[9][10] ;
 
-void showModule() ;
+void showModule(void) ;
 
 #endif /* UILink_h */

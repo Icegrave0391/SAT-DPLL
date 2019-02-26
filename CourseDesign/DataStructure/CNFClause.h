@@ -28,25 +28,26 @@ enum LiteralContainStatus{
 typedef enum LiteralContainStatus LiteralContainStatus;
 
 #pragma mark - Clause struct
-typedef struct {
-    int literalCount ;      //via file
-//    ClauseStatus clauseStatus ;
-    int * literals ;
-} Clause ;
-
+struct Clause{
+    int literal ;
+    struct Clause * next ;
+}  ;
+typedef struct Clause Clause;
 typedef Clause * clause ;
 
 //clause operate functions
 
 //clause createClause(int literalNum, ClauseStatus clsStatus, int * literals) ;
+int initClause(clause * cls) ;
 clause createClause(int literalNum, int * literals) ;
 clause deepCpyClause(clause aclause) ;
 //int destoryClause(clause cls) ;
 int isUnitClause (Clause cls) ;
 int isEmptyClause(Clause cls) ;
 LiteralContainStatus literalStatusWithClause(Clause Cls, int literal) ;
-void deleteLiteral(clause cls, int literal) ;
+void deleteLiteral(clause * cls, int literal) ;
 int findRandomLiteral(clause cls) ;
 #pragma mark - WARNING!!! THIS METHOD SHOULD ONLY BE USED IN DPLL UNIT
 int findFirstLiteral(clause cls) ;
+void addLiteral(clause * cls, int literal) ;
 #endif /* CNFClause_h */
